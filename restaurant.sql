@@ -43,3 +43,22 @@ SELECT * FROM restaurant WHERE distance_from_hq < 2;
 SELECT * FROM restaurant WHERE last_went <= '2017-05-08';
 -- 5-star restaurants where you haven't eaten in the past week:
 SELECT * FROM restaurant WHERE last_went <= '2017-05-08' AND stars = 5;
+
+-- 4. Aggregation & Sorting Exercises
+
+-- List restaurants by closest distance
+SELECT * FROM restaurant ORDER BY distance_from_hq;
+-- List top 2 restaurants by distance
+SELECT * FROM restaurant ORDER BY distance_from_hq LIMIT 2;
+-- List top 2 restaurants by stars
+SELECT * FROM restaurant ORDER BY stars DESC LIMIT 2;
+-- List top 2 restaurants by stars where distance is less than 2 miles
+SELECT name FROM restaurant WHERE distance_from_hq < 2 ORDER BY stars DESC LIMIT 2;
+-- Count the number of restaurants in the db
+SELECT COUNT(*) FROM restaurant;
+-- Count the number of restaurants by category
+SELECT name, COUNT(category) FROM restaurant GROUP BY category;
+-- Get the average stars per restaurant by category
+SELECT category, AVG(stars) AS avg_stars FROM restaurant GROUP BY category;
+-- Get the max stars of a restaurant by category
+SELECT category, MAX(stars) AS highest_rated FROM restaurant GROUP BY category;
