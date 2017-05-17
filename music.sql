@@ -29,4 +29,4 @@ CREATE TABLE Track (
 CREATE TABLE SongWriters (
   song_id INTEGER REFERENCES song(id),
   writer_id INTEGER REFERENCES writer(id)
-)
+);
